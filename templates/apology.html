@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <!-- https://memegen.link/ -->
+    <div>
+        <h1 id="countdown">
+            This page will automatically be redirected in 10s...
+        </h1>
+    </div>
+    <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png&width=400" title="{{ top }}">
+{% endblock %}
+
+{% block script %}
+    <script>
+            window.setInterval(function(){
+                window.location.href = "login";
+            }, 10000);
+
+            let seconds = 9;
+            window.setInterval(function(){
+                let element = document.getElementById("countdown");
+                element.innerHTML = "This page will automatically be redirected in " + seconds + "s...";
+                seconds--;
+            }, 1000);
+    </script>
+{% endblock %}
